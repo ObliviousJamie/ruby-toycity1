@@ -28,6 +28,7 @@ puts "|_|                                       "
   #Printing the items and prices
   products_hash["items"].each do |toy|
       full_price = toy["full-price"]
+      puts "***********************"
       puts "Product name: #{toy["title"]} "
       puts "Product price: $#{full_price} "
 
@@ -50,7 +51,8 @@ puts "|_|                                       "
       puts "Total purchases #{purchases} "
       puts "Total sales $#{sale_total} "
       puts "Average price $#{average_price} "
-      puts "Average discount: #{average_discount.round(2)}% \n "  
+      puts "Average discount: #{average_discount.round(2)}% "   
+      puts "*********************** \n \n"
   end
 
 
@@ -105,9 +107,11 @@ puts "|_|                                       "
         end
         #Printing variables
         brands_hash.each do |brand, rest| 
+            puts "***********************"
             puts "Brand: #{brand} "
             brand_no = rest[:product_id].to_f
             puts "Toy Stock: #{rest[:toy_count].to_i }"
             puts "Average Brand Price: $#{(rest[:avg_price] / brand_no).round(2)} "
-            puts "Revenue: $#{rest[:revenue].round(2)} \n \n"
+            puts "Revenue: $#{rest[:revenue].round(2)}"
+            puts "*********************** \n \n"
         end

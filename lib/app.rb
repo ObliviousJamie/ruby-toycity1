@@ -32,24 +32,20 @@ puts "|_|                                       "
       puts "Product name: #{toy["title"]} "
       puts "Product price: $#{full_price} "
 
-      #Variables set to 0 before loop
-      sale_total = 0
-      purchases = 0
+      #Purchases number
+      purchases = toy["purchases"].length
 
-      #Loop to add up sales and purchases
-      toy["purchases"].each do |sale|
-          purchases = purchases + 1
-          sale_total = sale_total + sale["price"] 
-      end
+      #Calculate total sales revenue from all purchases 
+      sales_revenue = toy["purchases"].inject(0) { |sales_total, sale| sales_total + sale["price"]}
 
       #Finding average price
-      average_price = sale_total/purchases
+      average_price = sales_revenue/purchases
       #Finding average discount
       full_price = full_price.to_f  #Must be float to divide by another float 
-      average_discount = (average_price / full_price) * 10
+      average_discount = ((full_price - average_price) / full_price) * 100
      
       puts "Total purchases #{purchases} "
-      puts "Total sales $#{sale_total} "
+      puts "Total sales $#{sales_revenue} "
       puts "Average price $#{average_price} "
       puts "Average discount: #{average_discount.round(2)}% "   
       puts "*********************** \n \n"
